@@ -122,7 +122,7 @@ function switchTab(name, pushHistory = true) {
     btn.setAttribute("aria-selected", String(active));
     btn.classList.toggle("bg-ink", active);
     btn.classList.toggle("text-white", active);
-    btn.classList.toggle("text-ink/60", !active);
+    btn.classList.toggle("text-ink-muted", !active);
     btn.classList.toggle("hover:bg-ink/5", !active);
   });
 
@@ -257,7 +257,7 @@ function renderExpenseList() {
 
   if (items.length === 0) {
     const li = document.createElement("li");
-    li.className = "py-8 text-center text-sm text-ink/50";
+    li.className = "py-8 text-center text-sm text-ink-muted";
     li.textContent = "Tidak ada transaksi yang cocok dengan pencarian/filter.";
     expenseList.appendChild(li);
     return;
@@ -282,13 +282,13 @@ function buildExpenseRow(item) {
       <p class="text-sm font-semibold text-ink truncate">${escapeHtml(item.title)}</p>
       <div class="flex flex-wrap items-center gap-1.5 mt-1">
         <span class="inline-flex items-center rounded-full px-2 py-0.5 text-[11px] font-medium ${typeBadgeClass}">${escapeHtml(item.type)}</span>
-        <span class="inline-flex items-center rounded-full px-2 py-0.5 text-[11px] font-medium bg-ink/5 text-ink/60">${escapeHtml(item.category)}</span>
-        <span class="text-[11px] text-ink/40">${formatTanggal(item.date)}</span>
+        <span class="inline-flex items-center rounded-full px-2 py-0.5 text-[11px] font-medium bg-ink/5 text-ink-muted">${escapeHtml(item.category)}</span>
+        <span class="text-[11px] text-ink-muted">${formatTanggal(item.date)}</span>
       </div>
     </div>
     <div class="flex items-center gap-2 shrink-0">
       <p class="text-sm font-semibold ${amountClass}">${sign} ${formatRupiah(item.amount)}</p>
-      <button type="button" class="expense-edit-btn p-1.5 rounded-lg text-ink/50 hover:bg-ink/5" aria-label="Ubah transaksi">
+      <button type="button" class="expense-edit-btn p-1.5 rounded-lg text-ink-muted hover:bg-ink/5" aria-label="Ubah transaksi">
         <i class="ti ti-pencil"></i>
       </button>
       <button type="button" class="expense-delete-btn p-1.5 rounded-lg text-rose-500 hover:bg-rose-50" aria-label="Hapus transaksi">
@@ -480,7 +480,7 @@ function renderBookmarks() {
 
   if (items.length === 0) {
     const li = document.createElement("li");
-    li.className = "col-span-full py-8 text-center text-sm text-ink/50";
+    li.className = "col-span-full py-8 text-center text-sm text-ink-muted";
     li.textContent = "Tidak ada bookmark yang cocok dengan pencarian.";
     bookmarkList.appendChild(li);
     return;
@@ -504,10 +504,10 @@ function buildBookmarkCard(item) {
       <span class="inline-flex shrink-0 items-center rounded-full px-2 py-0.5 text-[11px] font-medium bg-bookmark-light text-bookmark">${escapeHtml(item.category)}</span>
     </div>
     <a href="${escapeHtml(item.url)}" target="_blank" rel="noopener noreferrer"
-       class="text-xs text-ink/50 hover:text-bookmark break-all">${escapeHtml(item.url)}</a>
-    ${item.note ? `<p class="text-xs text-ink/60">${escapeHtml(item.note)}</p>` : ""}
+       class="text-xs text-ink-muted hover:text-bookmark break-all">${escapeHtml(item.url)}</a>
+    ${item.note ? `<p class="text-xs text-ink-muted">${escapeHtml(item.note)}</p>` : ""}
     <div class="flex items-center gap-2 mt-1">
-      <button type="button" class="bookmark-edit-btn inline-flex items-center gap-1 text-xs font-medium text-ink/60 hover:text-ink">
+      <button type="button" class="bookmark-edit-btn inline-flex items-center gap-1 text-xs font-medium text-ink-muted hover:text-ink">
         <i class="ti ti-pencil"></i> Ubah
       </button>
       <button type="button" class="bookmark-delete-btn inline-flex items-center gap-1 text-xs font-medium text-rose-500 hover:text-rose-700">
